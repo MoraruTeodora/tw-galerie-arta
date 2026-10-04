@@ -21,12 +21,12 @@ Am folosit instrumente AI pentru a genera structura HTML semantică și regulile
 
 ## Lista de verificare a etapei 1
 
-* [x] **S1-R1:** HTML Semantic (`<header>`, `<main>`, `<section>`, `<footer>`) - [LINK_HTML_SEMANTIC]
-* [x] **S1-R2:** Formular pentru adăugare și listă cu 3 elemente (1 marcat ca finalizat) - [LINK_FORMULAR_SI_LISTA]
-* [x] **S1-R3:** Folosire CSS Grid pentru așezarea elementelor majore în pagină - [LINK_CSS_GRID]
-* [x] **S1-R4:** Folosire CSS Flexbox pentru aranjarea elementelor în interiorul cardurilor/formularului - [LINK_CSS_FLEXBOX]
-* [x] **S1-R5:** Modelul cutiei (`box-sizing: border-box`) - [LINK_BOX_SIZING]
-* [x] **S1-R6:** Design responsiv (`@media` query pentru ecran < 700px) - [LINK_RESPONSIV]
-* [x] **S1-R7:** Utilizare variabile CSS (`:root`) - [LINK_VARIABILE]
-* [x] **S1-R8:** Temă întunecată (`@media (prefers-color-scheme: dark)`) - [LINK_DARK_THEME]
-* [x] **S1-R9:** Stări interactive și accesibilitate (`:hover`, `:focus-visible`) - [LINK_ACCESIBILITATE]
+* [x] **S1-R1:** HTML Semantic (`<header>`, `<main>`, `<section>`, `<footer>`) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/index.html#L10
+* [x] **S1-R2:** Formular pentru adăugare și listă cu 3 elemente (1 marcat ca finalizat) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/index.html#L42
+* [x] **S1-R3:** Folosire CSS Grid pentru așezarea elementelor majore în pagină - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/style.css#L43
+* [x] **S1-R4:** Folosire CSS Flexbox pentru aranjarea elementelor în interiorul cardurilor/formularului - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/style.css#L56
+* [x] **S1-R5:** Modelul cutiei (`box-sizing: border-box`) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/style.css#L21
+* [x] **S1-R6:** Design responsiv (`@media` query pentru ecran < 700px) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/style.css#L87
+* [x] **S1-R7:** Utilizare variabile CSS (`:root`) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/style.css#L1
+* [x] **S1-R8:** Temă întunecată (`@media (prefers-color-scheme: dark)`) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/style.css#L9
+* [x] **S1-R9:** Stări interactive și accesibilitate (`:hover`, `:focus-visible`) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/style.css#L78
