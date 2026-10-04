@@ -1,0 +1,91 @@
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --accent-color: #5b6ee1;
+    --done-bg: #d1d5db;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1a1a24;
+        --text-color: #eaeaea;
+        --card-bg: #2d2d3a;
+        --accent-color: #7b8cff;
+        --done-bg: #3a3a4a;
+    }
+}
+
+/* Modelul cutiei (cerința S1-R5) */
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: var(--card-bg);
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card.done {
+    background-color: var(--done-bg);
+    opacity: 0.8;
+}
+
+button, input, select {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+button:hover, .card:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 3px solid var(--accent-color);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+@media (max-width: 700px) {
+    main {
+        grid-template-columns: 1fr; 
+    }
+}

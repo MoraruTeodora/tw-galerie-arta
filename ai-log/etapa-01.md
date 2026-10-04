@@ -1,0 +1,1 @@
+Am folosit asistență AI pentru a genera scheletul HTML semantic, regulile CSS și tema întunecată.

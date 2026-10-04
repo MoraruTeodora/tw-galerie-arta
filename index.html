@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Management Galerie de Artă</h1>
+    </header>
+    
+    <main>
+        <section class="form-section">
+            <h2>Adaugă Operă</h2>
+            <form>
+                <label for="titlu">Titlu Operă:</label>
+                <input type="text" id="titlu" placeholder="Ex: Noapte Înstelată">
+                
+                <label for="tip">Tipul de artă:</label>
+                <select id="tip">
+                    <option>Pictură</option>
+                    <option>Sculptură</option>
+                    <option>Fotografie</option>
+                </select>
+                
+                <button type="button">Adaugă</button>
+            </form>
+        </section>
+
+        <section class="list-section">
+            <h2>Inventar Opere</h2>
+            <ul class="art-list">
+                <li class="card">
+                    <div class="info">
+                        <h3>Noapte Înstelată</h3>
+                        <p>Pictură | Modern | Administrator: Teodora Moraru</p>
+                    </div>
+                    <span class="status">Expusă</span>
+                </li>
+                <li class="card done">
+                    <div class="info">
+                        <h3>Gânditorul</h3>
+                        <p>Sculptură | Clasic | Administrator: Teodora Moraru</p>
+                    </div>
+                    <span class="status">În depozit</span>
+                </li>
+                <li class="card">
+                    <div class="info">
+                        <h3>Peisaj de toamnă</h3>
+                        <p>Fotografie | Contemporan | Administrator: Teodora Moraru</p>
+                    </div>
+                    <span class="status">Expusă</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proiect Tehnologii Web</p>
+    </footer>
+</body>
+</html>
