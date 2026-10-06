@@ -1,4 +1,3 @@
-
 const opereArta = [
     { id: 1, titlu: "Noapte Înstelată", expusa: true, tip: "Pictură", categorie: "Modern", administrator: "Teodora Moraru" },
     { id: 2, titlu: "Gânditorul", expusa: false, tip: "Sculptură", categorie: "Clasic", administrator: "Teodora Moraru" },
@@ -7,16 +6,13 @@ const opereArta = [
 
 const TIPURI_ARTA = ["Pictură", "Sculptură", "Fotografie"];
 
-
 function listeazaTitluri(lista) {
     return lista.map((o) => o.titlu);
 }
 
-
 function numaraExpuse(lista) {
     return lista.filter((o) => o.expusa).length;
 }
-
 
 function cautaDupaTitlu(lista, text) {
     const textMic = text.toLowerCase();
@@ -26,7 +22,6 @@ function cautaDupaTitlu(lista, text) {
 function nextId(lista) {
     return lista.reduce((max, o) => Math.max(max, o.id), 0) + 1;
 }
-
 
 function adaugaOpera(lista, titlu, tip, categorie = "Contemporan") {
     const titluCurat = titlu.trim();
@@ -49,16 +44,15 @@ function adaugaOpera(lista, titlu, tip, categorie = "Contemporan") {
         administrator: "Teodora Moraru"
     };
 
-    return [...lista, nouaOpera]; 
+    return [...lista, nouaOpera];
+}
 
-// 5. Comutarea stării (map)
 function comutaStare(lista, id) {
     return lista.map((o) => 
         o.id === id ? { ...o, expusa: !o.expusa } : o
     );
 }
 
-// 6. Ștergerea unui element (filter)
 function stergeOpera(lista, id) {
     return lista.filter((o) => o.id !== id);
 }
@@ -71,7 +65,7 @@ console.log("Căutare 'toamna':", listeazaTitluri(cautaDupaTitlu(opereArta, "toa
 console.log("--- Adăugare ---");
 let listaNoua = adaugaOpera(opereArta, "Mona Lisa", "Pictură", "Clasic");
 console.log("Lista nouă:", listaNoua.length, "opere");
-console.log("Originalul a rămas cu:", opereArta.length, "opere"); 
+console.log("Originalul a rămas cu:", opereArta.length, "opere");
 
 console.log("--- Modificare și ștergere ---");
 listaNoua = comutaStare(listaNoua, 1);
@@ -81,4 +75,4 @@ console.log("După ștergerea id 3:", listeazaTitluri(listaNoua).join(", "));
 
 console.log("--- Validare ---");
 adaugaOpera(listaNoua, "   ", "Pictură");
-adaugaOpera(listaNoua, "Statuie", "Ceramică"); 
+adaugaOpera(listaNoua, "Statuie", "Ceramică");
