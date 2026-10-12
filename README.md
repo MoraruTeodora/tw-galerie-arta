@@ -21,7 +21,7 @@ A web interface for an art gallery management system, allowing administrators to
 
 | Tool | Used for |
 | :--- | :--- |
-| AI tools | Generating semantic HTML structure and CSS rules |
+| Gemini | Generating semantic HTML structure and CSS rules |
 
 Details per stage: see the `ai-log/` folder.
 
