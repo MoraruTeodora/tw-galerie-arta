@@ -58,3 +58,22 @@ Plain JavaScript, no DOM. galerie.js holds the array and the functions that read
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [ ] Stage 3: Vite and React project
+
+## Stage 3: Vite and React project
+The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
+
+## How to run
+cd frontend
+npm install
+npm run dev
+
+Then open the address printed in the terminal (http://localhost:5173).
+
+## Stage 3 Checklist
+- [x] S3-R1 npm run dev pornește fără erori pe calculatorul studentului.
+- [x] S3-R2 Pagina afișează numele aplicației și contorul calculat din date.
+- [x] S3-R3 Datele sunt cele din README, nu cele din exemplu.
+- [x] S3-R4 Stilurile din Etapa 1 se regăsesc în aplicație.
+- [x] S3-R5 node_modules/ nu apare pe GitHub, iar npm run build rulează fără erori.
+- [x] S3-R6 README-ul este actualizat, iar ai-log/etapa-03.md este completat.
+- [x] S3-R7 Commit-ul "Stage 3" este publicat pe GitHub.
