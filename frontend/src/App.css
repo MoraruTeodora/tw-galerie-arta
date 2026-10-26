@@ -1,24 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+
 :root {
-    --bg-color: #f4f4f9;
-    --text-color: #333333;
-    --card-bg: #ffffff;
-    --accent-color: #5b6ee1;
-    --done-bg: #d1d5db;
+    --bg-gradient: linear-gradient(135deg, #fffcf9 0%, #f5eef8 50%, #e8f0fe 100%);
+    --text-color: #4a3b32;
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --accent-color: #d35400;
+    --done-bg: rgba(232, 222, 213, 0.85);
+    --frame-color: rgba(211, 84, 0, 0.2);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-color: #1a1a24;
-        --text-color: #eaeaea;
-        --card-bg: #2d2d3a;
-        --accent-color: #7b8cff;
-        --done-bg: #3a3a4a;
+        --bg-gradient: linear-gradient(135deg, #2a283e 0%, #1f2335 50%, #12141e 100%);
+        --text-color: #f0e6e6;
+        --card-bg: rgba(30, 32, 48, 0.7);
+        --accent-color: #f39c12;
+        --done-bg: rgba(42, 45, 66, 0.85);
+        --frame-color: rgba(243, 156, 18, 0.2);
     }
 }
 
-/* Modelul cutiei (cerința S1-R5) */
 html {
     box-sizing: border-box;
+    min-height: 100vh;
 }
 
 *, *:before, *:after {
@@ -26,67 +30,183 @@ html {
 }
 
 body {
-    background-color: var(--bg-color);
+    background: var(--bg-gradient);
+    background-attachment: fixed;
     color: var(--text-color);
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 0;
 }
 
 header, footer {
     background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
     padding: 20px;
     text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.header-decor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.header-icon {
+    width: 64px;
+    height: 64px;
+    opacity: 0.9;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
 }
 
 main {
     display: grid;
-    /* Etapa 3: doar panoul cu date; a doua coloană revine în Etapa 7 */
     grid-template-columns: 1fr; 
     gap: 20px;
-    padding: 20px;
+    padding: 30px 20px;
     max-width: 1000px;
     margin: auto;
 }
 
+/* STILURI CARDURI */
 .card {
     background-color: var(--card-bg);
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid transparent;
+    outline: 1px solid var(--frame-color);
+    outline-offset: -8px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: url('/pensula.svg') 0 0, pointer;
 }
 
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+    border-left: 4px solid var(--accent-color);
+}
+
+/* STILURI PENTRU ELEMENTELE "IN STORAGE" */
 .card.done {
     background-color: var(--done-bg);
-    opacity: 0.8;
+    opacity: 0.9;
+    filter: grayscale(15%);
+    border: 2px dashed var(--accent-color); /* Contur întrerupt care atrage atenția */
+    outline: none; /* Scoatem rama clasică pentru a evidenția stadiul de depozit */
+    pointer-events: none; /* Face cardul complet inaccesibil (fără hover, fără cursor pensulă) */
 }
 
+.card.done .status {
+    color: #c0392b; /* Roșu cărămiziu evident */
+    background-color: rgba(192, 57, 43, 0.1);
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(192, 57, 43, 0.3);
+}
+
+/* STRUCTURA INTERIOARĂ A CARDULUI */
+.card-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.opera-imagine {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--frame-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.status {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* BUTOANE ȘI INPUTURI */
 button, input, select {
     padding: 10px;
     margin-bottom: 10px;
     width: 100%;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--text-color);
+    font-family: inherit;
+    cursor: url('/pensula.svg') 0 0, pointer;
 }
 
-button:hover, .card:hover {
-    transform: scale(1.02);
-    transition: 0.2s;
+button {
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Efectul de pată de vopsea la trecerea peste buton */
+button:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-color: transparent;
+    border-radius: 20px 80px 30px 70px / 70px 20px 80px 30px;
+    transform: scale(1.03) rotate(-1deg);
+    box-shadow: 0 8px 16px rgba(211, 84, 0, 0.3);
 }
 
 button:focus-visible, input:focus-visible, select:focus-visible {
-    outline: 3px solid var(--accent-color);
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
+/* RESPONSIVITATE PENTRU ECRANE MICI */
 @media (max-width: 700px) {
     main {
         grid-template-columns: 1fr; 
+    }
+    .header-icon {
+        display: none;
+    }
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .card-info {
+        flex-direction: column;
+        text-align: center;
     }
 }

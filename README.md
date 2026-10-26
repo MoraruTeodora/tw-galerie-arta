@@ -77,3 +77,25 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] S3-R5 node_modules/ nu apare pe GitHub, iar npm run build rulează fără erori.
 - [x] S3-R6 README-ul este actualizat, iar ai-log/etapa-03.md este completat.
 - [x] S3-R7 Commit-ul "Stage 3" este publicat pe GitHub.
+
+## Stage 4: components
+The list is rendered from the data, through two components:
+OperaList receives the whole array and renders one card per item
+OperaCard receives a single item through props and displays it
+
+## Status
+- [x] Stage 3: Vite and React project
+- [x] Stage 4: components rendered from data
+- [ ] Stage 5: local state and events
+
+## Tabel de verificare Etapa 4
+
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S4-R1 | 2+ components in src/components/ | frontend/src/components/ | open folder |
+| S4-R2 | card receives data through props | frontend/src/components/OperaCard.jsx | read |
+| S4-R3 | map + key={id}, no console warnings | frontend/src/components/OperaList.jsx | F12, Console |
+| S4-R4 | message for empty list | frontend/src/components/OperaList.jsx | set array to [] |
+| S4-R5 | state changes the card look | frontend/src/components/OperaCard.jsx | toggle a done flag |
+| S4-R6 | README Stage 4 section + AI log | README.md, ai-log/etapa-04.md | read |
+| S4-R7 | commit "Stage 4" pushed | commit history |

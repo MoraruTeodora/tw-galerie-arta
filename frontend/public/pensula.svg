@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Grup cu contur rotunjit pentru efect de "sticker" -->
+  <g stroke="#2d3436" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Mâner (Albastru pastel) -->
+    <path fill="#74b9ff" d="M 16 20 L 20 16 L 29 25 A 2.8 2.8 0 0 1 25 29 Z" />
+    
+    <!-- Partea metalică (Argintiu) -->
+    <polygon fill="#dfe6e9" points="10,14 14,10 20,16 16,20" />
+    
+    <!-- Detaliile (striațiile) de pe metal -->
+    <line x1="13" y1="17" x2="17" y2="13" />
+    <line x1="15" y1="19" x2="19" y2="15" />
+    
+    <!-- Perii pensulei (Crem) -->
+    <path fill="#ffeaa7" d="M 0 0 C 2 7 6 12 10 14 L 14 10 C 12 6 7 2 0 0 Z" />
+    
+    <!-- Vopseaua din vârf (Portocaliu asortat) -->
+    <path fill="#e17055" d="M 0 0 C 1.5 5 4 8 6.5 9.5 Q 8 8 9.5 6.5 C 8 4 5 1.5 0 0 Z" />
+  </g>
+  
+  <!-- Un mic reflex de lumină pe mâner pentru efect 3D -->
+  <line x1="18" y1="18" x2="26" y2="26" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+</svg>
