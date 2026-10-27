@@ -26,15 +26,38 @@ A web interface for an art gallery management system, allowing administrators to
 Details per stage: see the `ai-log/` folder.
 
 ## How to run
-Open index.html in a browser. No build step, no server.
+**Stage 1 & 2:** Open index.html in a browser. No build step, no server.
+**Stage 3+ (React):** 
+cd frontend
+npm install
+npm run dev
+Then open the address printed in the terminal (http://localhost:5173).
 
 ## Stage 2: data logic
 Plain JavaScript, no DOM. galerie.js holds the array and the functions that read and change it. Results are printed in the browser console (F12).
 
+## Stage 3: Vite and React project
+The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
+
+## Stage 4: components
+The list is rendered from the data, through two components:
+OperaList receives the whole array and renders one card per item
+OperaCard receives a single item through props and displays it
+
+## Stage 5: local state and events
+The list lives in React state. Checking and deleting work from the page, and the counters in the header follow automatically. A button in the header switches between light and dark mode. Changes are lost on refresh, which is what stage 6 and stage 10 fix.
+
+## Status
+- [x] Stage 1: static mockup
+- [x] Stage 2: data logic in JavaScript
+- [x] Stage 3: Vite and React project
+- [x] Stage 4: components rendered from data
+- [x] Stage 5: local state and events
+- [ ] Stage 6: loading data from a mock API
+
 ---
 
 ## Stage 1 Checklist
-
 - [x] **S1-R1:** Semantic HTML (`<header>`, `<main>`, `<section>`, `<footer>`) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/index.html#L10
 - [x] **S1-R2:** Form for adding and list with 3 items (1 marked as done) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/index.html#L42
 - [x] **S1-R3:** Used CSS Grid for major page layout - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/style.css#L43
@@ -46,7 +69,6 @@ Plain JavaScript, no DOM. galerie.js holds the array and the functions that read
 - [x] **S1-R9:** Interactive states and accessibility (`:hover`, `:focus-visible`) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/169c479f9118f04b2f7be0d54913d1e1e3b677ce/style.css#L78
 
 ## Stage 2 Checklist
-
 - [x] **S2-R1:** JS file linked, logs on page load - https://github.com/MoraruTeodora/tw-galerie-arta/blob/f452802a822b9c22904810db1dc604917bd69874/index.html#L63
 - [x] **S2-R2:** Array with 3 items (id, title, state, tag) - https://github.com/MoraruTeodora/tw-galerie-arta/blob/f452802a822b9c22904810db1dc604917bd69874/galerie.js#L1
 - [x] **S2-R3:** List, count, search, add, toggle, and delete functions - https://github.com/MoraruTeodora/tw-galerie-arta/blob/f452802a822b9c22904810db1dc604917bd69874/galerie.js#L9
@@ -54,42 +76,16 @@ Plain JavaScript, no DOM. galerie.js holds the array and the functions that read
 - [x] **S2-R5:** Original array unchanged after add - https://github.com/MoraruTeodora/tw-galerie-arta/blob/f452802a822b9c22904810db1dc604917bd69874/galerie.js#L68
 - [x] **S2-R6:** Commit "Stage 2: data logic in JavaScript" is published.
 
-## Status
-- [x] Stage 1: static mockup
-- [x] Stage 2: data logic in JavaScript
-- [ ] Stage 3: Vite and React project
-
-## Stage 3: Vite and React project
-The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
-
-## How to run
-cd frontend
-npm install
-npm run dev
-
-Then open the address printed in the terminal (http://localhost:5173).
-
 ## Stage 3 Checklist
-- [x] S3-R1 npm run dev pornește fără erori pe calculatorul studentului.
-- [x] S3-R2 Pagina afișează numele aplicației și contorul calculat din date.
-- [x] S3-R3 Datele sunt cele din README, nu cele din exemplu.
-- [x] S3-R4 Stilurile din Etapa 1 se regăsesc în aplicație.
-- [x] S3-R5 node_modules/ nu apare pe GitHub, iar npm run build rulează fără erori.
-- [x] S3-R6 README-ul este actualizat, iar ai-log/etapa-03.md este completat.
-- [x] S3-R7 Commit-ul "Stage 3" este publicat pe GitHub.
+- [x] **S3-R1:** `npm run dev` starts without errors on the student's machine.
+- [x] **S3-R2:** The page displays the app name and the counter calculated from the data.
+- [x] **S3-R3:** The data used is from the README, not the default example.
+- [x] **S3-R4:** The styles from Stage 1 are applied in the app.
+- [x] **S3-R5:** `node_modules/` is excluded from GitHub, and `npm run build` runs without errors.
+- [x] **S3-R6:** The README is updated, and `ai-log/etapa-03.md` is completed.
+- [x] **S3-R7:** The "Stage 3" commit is published on GitHub.
 
-## Stage 4: components
-The list is rendered from the data, through two components:
-OperaList receives the whole array and renders one card per item
-OperaCard receives a single item through props and displays it
-
-## Status
-- [x] Stage 3: Vite and React project
-- [x] Stage 4: components rendered from data
-- [ ] Stage 5: local state and events
-
-## Tabel de verificare Etapa 4
-
+## Stage 4 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
 | S4-R1 | 2+ components in src/components/ | frontend/src/components/ | open folder |
@@ -98,4 +94,16 @@ OperaCard receives a single item through props and displays it
 | S4-R4 | message for empty list | frontend/src/components/OperaList.jsx | set array to [] |
 | S4-R5 | state changes the card look | frontend/src/components/OperaCard.jsx | toggle a done flag |
 | S4-R6 | README Stage 4 section + AI log | README.md, ai-log/etapa-04.md | read |
-| S4-R7 | commit "Stage 4" pushed | commit history |
+| S4-R7 | commit "Stage 4" pushed | *[Add link to Stage 4 commit here]* | commit history |
+
+## Stage 5 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S5-R1 | list kept in useState, in App | frontend/src/App.jsx | read |
+| S5-R2 | toggling changes state and card look | frontend/src/App.jsx, frontend/src/components/OperaCard.jsx | click a checkbox |
+| S5-R3 | delete removes the item | frontend/src/App.jsx, frontend/src/components/OperaCard.jsx | click Delete |
+| S5-R4 | header counter derived, not in state | frontend/src/App.jsx | toggle, watch header |
+| S5-R5 | immutable updates (no push, splice, assignment) | frontend/src/App.jsx | read |
+| S5-R6 | light/dark toggle: state + data-theme on html | frontend/src/App.jsx, frontend/src/App.css | click the button, both system themes |
+| S5-R7 | no console warnings; README + AI log | README.md, ai-log/etapa-05.md | Console |
+| S5-R8 | commit "Stage 5" pushed | commit history |

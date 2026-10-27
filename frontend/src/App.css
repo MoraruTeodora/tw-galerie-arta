@@ -9,8 +9,9 @@
     --frame-color: rgba(211, 84, 0, 0.2);
 }
 
+/* Tema sistemului, dacă utilizatorul nu a ales explicit tema luminoasă */
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
         --bg-gradient: linear-gradient(135deg, #2a283e 0%, #1f2335 50%, #12141e 100%);
         --text-color: #f0e6e6;
         --card-bg: rgba(30, 32, 48, 0.7);
@@ -18,6 +19,16 @@
         --done-bg: rgba(42, 45, 66, 0.85);
         --frame-color: rgba(243, 156, 18, 0.2);
     }
+}
+
+/* Tema aleasă din buton are prioritate față de cea a sistemului */
+:root[data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #2a283e 0%, #1f2335 50%, #12141e 100%);
+    --text-color: #f0e6e6;
+    --card-bg: rgba(30, 32, 48, 0.7);
+    --accent-color: #f39c12;
+    --done-bg: rgba(42, 45, 66, 0.85);
+    --frame-color: rgba(243, 156, 18, 0.2);
 }
 
 html {
@@ -53,6 +64,34 @@ header, footer {
     text-align: center;
     border-bottom: 2px solid var(--accent-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Etapa 5: antet relativ pentru a poziționa butonul de temă */
+.app-header { 
+    position: relative; 
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    padding: 6px 12px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: url('/pensula.svg') 0 0, pointer;
+    width: auto;
+    margin-bottom: 0;
+}
+
+.theme-toggle:hover { 
+    background: var(--accent-color);
+    color: #fff;
+    transform: none;
+    box-shadow: none;
 }
 
 .header-decor {
@@ -107,20 +146,34 @@ main {
     background-color: var(--done-bg);
     opacity: 0.9;
     filter: grayscale(15%);
-    border: 2px dashed var(--accent-color); /* Contur întrerupt care atrage atenția */
-    outline: none; /* Scoatem rama clasică pentru a evidenția stadiul de depozit */
-    pointer-events: none; /* Face cardul complet inaccesibil (fără hover, fără cursor pensulă) */
+    border: 2px dashed var(--accent-color); 
+    outline: none; 
 }
 
 .card.done .status {
-    color: #c0392b; /* Roșu cărămiziu evident */
+    color: #c0392b; 
     background-color: rgba(192, 57, 43, 0.1);
     padding: 6px 12px;
     border-radius: 4px;
     border: 1px solid rgba(192, 57, 43, 0.3);
 }
 
-/* STRUCTURA INTERIOARĂ A CARDULUI */
+/* STRUCTURA INTERIOARĂ A CARDULUI ȘI CHECKBOX (Etapa 5) */
+.task-main { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    cursor: url('/pensula.svg') 0 0, pointer; 
+}
+
+.task-main input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--accent-color);
+    cursor: url('/pensula.svg') 0 0, pointer;
+    margin-bottom: 0;
+}
+
 .card-info {
     display: flex;
     align-items: center;
@@ -145,6 +198,13 @@ main {
 .title-icon {
     width: 28px;
     height: 28px;
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
 }
 
 .status {
@@ -186,6 +246,24 @@ button:focus-visible, input:focus-visible, select:focus-visible {
     outline-offset: 2px;
 }
 
+/* Etapa 5: Butonul de ștergere */
+.btn-danger {
+    border: 1px solid #c0392b;
+    background: transparent;
+    color: #c0392b;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font: inherit;
+    cursor: url('/pensula.svg') 0 0, pointer;
+    width: auto;
+    margin-bottom: 0;
+}
+
+.btn-danger:hover { 
+    background: #c0392b; 
+    color: #fff; 
+}
+
 ul {
     list-style: none;
     padding: 0;
@@ -208,5 +286,8 @@ ul {
     .card-info {
         flex-direction: column;
         text-align: center;
+    }
+    .card-actions {
+        align-items: flex-start;
     }
 }
