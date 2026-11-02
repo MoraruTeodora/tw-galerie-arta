@@ -1,6 +1,6 @@
 import OperaCard from "./OperaCard.jsx";
 
-export default function OperaList({ opereArta, onToggle, onDelete }) {
+export default function OperaList({ opereArta, onToggle, onDelete, onOpenModal }) {
     if (opereArta.length === 0) {
         return <p className="empty">Nu există nicio operă de artă în inventar.</p>;
     }
@@ -13,6 +13,7 @@ export default function OperaList({ opereArta, onToggle, onDelete }) {
                     opera={opera} 
                     onToggle={onToggle} 
                     onDelete={onDelete} 
+                    onOpenModal={onOpenModal} 
                 />
             ))}
         </ul>

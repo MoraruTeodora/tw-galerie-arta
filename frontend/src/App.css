@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
 
 :root {
-    --bg-gradient: linear-gradient(135deg, #fffcf9 0%, #f5eef8 50%, #e8f0fe 100%);
+    --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #fadadd 100%);
     --text-color: #4a3b32;
-    --card-bg: rgba(255, 255, 255, 0.75);
+    --card-bg: rgba(255, 240, 245, 0.85);
     --accent-color: #d35400;
-    --done-bg: rgba(232, 222, 213, 0.85);
+    --done-bg: rgba(240, 225, 230, 0.85);
     --frame-color: rgba(211, 84, 0, 0.2);
 }
 
-/* Tema sistemului, dacă utilizatorul nu a ales explicit tema luminoasă */
+/* Tema sistemului */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
         --bg-gradient: linear-gradient(135deg, #2a283e 0%, #1f2335 50%, #12141e 100%);
@@ -21,7 +21,7 @@
     }
 }
 
-/* Tema aleasă din buton are prioritate față de cea a sistemului */
+/* Tema manuală (buton) */
 :root[data-theme="dark"] {
     --bg-gradient: linear-gradient(135deg, #2a283e 0%, #1f2335 50%, #12141e 100%);
     --text-color: #f0e6e6;
@@ -41,13 +41,16 @@ html {
 }
 
 body {
-    background: var(--bg-gradient);
+    background-image: url('/fundal.jpg');
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
     color: var(--text-color);
     font-family: "Segoe UI", Arial, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    transition: color 0.5s ease, background-color 0.5s ease; 
 }
 
 h1, h2, h3 {
@@ -55,6 +58,7 @@ h1, h2, h3 {
     font-weight: 600;
     letter-spacing: 0.5px;
     margin-top: 0;
+    transition: color 0.5s ease;
 }
 
 header, footer {
@@ -64,17 +68,81 @@ header, footer {
     text-align: center;
     border-bottom: 2px solid var(--accent-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
-/* Etapa 5: antet relativ pentru a poziționa butonul de temă */
+/* ANTET ȘI PARTICULE AURII */
 .app-header { 
     position: relative; 
+    overflow: hidden; 
+    min-height: 210px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.app-header::before,
+.app-header::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; 
+    z-index: 0;
+}
+
+.app-header::before {
+    background-image: 
+        radial-gradient(4px 4px at 20px 30px, #f1c40f, transparent),
+        radial-gradient(5px 5px at 80px 70px, #f39c12, transparent),
+        radial-gradient(3.5px 3.5px at 150px 20px, #f1c40f, transparent),
+        radial-gradient(4.5px 4.5px at 250px 120px, #e67e22, transparent),
+        radial-gradient(6px 6px at 320px 90px, rgba(243, 156, 18, 0.8), transparent),
+        radial-gradient(4px 4px at 50px 200px, #f1c40f, transparent),
+        radial-gradient(5.5px 5.5px at 180px 180px, #f39c12, transparent),
+        radial-gradient(3.5px 3.5px at 280px 250px, #e67e22, transparent);
+    background-size: 300px 300px;
+    animation: floatParticles 40s linear infinite;
+    opacity: 0.85; 
+}
+
+.app-header::after {
+    background-image: 
+        radial-gradient(2.5px 2.5px at 50px 160px, #f1c40f, transparent),
+        radial-gradient(3px 3px at 120px 230px, #f39c12, transparent),
+        radial-gradient(2.5px 2.5px at 210px 270px, #e67e22, transparent),
+        radial-gradient(3.5px 3.5px at 290px 330px, #f1c40f, transparent),
+        radial-gradient(4px 4px at 360px 200px, rgba(241, 196, 15, 0.6), transparent),
+        radial-gradient(2px 2px at 90px 40px, #f1c40f, transparent),
+        radial-gradient(3.5px 3.5px at 220px 80px, #f39c12, transparent),
+        radial-gradient(3px 3px at 320px 150px, #e67e22, transparent);
+    background-size: 350px 350px;
+    animation: floatParticles 70s linear infinite reverse;
+    opacity: 0.6;
+}
+
+@keyframes floatParticles {
+    0% { background-position: 0px 0px; }
+    100% { background-position: 1000px 1000px; }
+}
+
+/* ELEMENTE ANTET  */
+.header-left-panel {
+    position: absolute;
+    top: 20px;
+    left: 24px; 
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .theme-toggle {
     position: absolute;
     top: 12px;
     right: 16px;
+    z-index: 10;
     padding: 6px 12px;
     border: 1px solid var(--accent-color);
     border-radius: 8px;
@@ -85,6 +153,10 @@ header, footer {
     cursor: url('/pensula.svg') 0 0, pointer;
     width: auto;
     margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.4s ease;
 }
 
 .theme-toggle:hover { 
@@ -95,17 +167,133 @@ header, footer {
 }
 
 .header-decor {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    text-align: center;
 }
 
-.header-icon {
-    width: 64px;
-    height: 64px;
-    opacity: 0.9;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+/* ILUSTRAȚIE ANIMATĂ (PENSULĂ ȘI PÂNZĂ) */
+.animated-art-scene {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px; /* Aliniază fin pânza sub textul "Art Gallery" */
+    z-index: 2;
+}
+
+.art-canvas {
+    position: relative;
+    width: 50px;
+    height: 60px;
+    background: #fdfdfd;
+    border: 3px solid var(--frame-color);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden; 
+}
+
+.art-splash {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent-color);
+    border-radius: 50% 40% 60% 30%;
+    opacity: 0;
+    transform: scale(0);
+    animation: revealSplash 3s ease-out infinite;
+}
+
+.art-sparkle {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    font-size: 1rem;
+    opacity: 0;
+    transform: scale(0);
+    animation: popSparkle 3s ease-out infinite;
+    line-height: 1;
+}
+
+.art-brush {
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
+    font-size: 2.5rem;
+    transform-origin: bottom left;
+    animation: paintStroke 3s ease-in-out infinite;
+    z-index: 3;
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3));
+}
+
+@keyframes paintStroke {
+    0% { transform: translate(40px, 40px) rotate(15deg); } 
+    20% { transform: translate(0px, 10px) rotate(-15deg); } 
+    35% { transform: translate(-25px, -15px) rotate(10deg); } 
+    50% { transform: translate(-5px, -30px) rotate(-10deg); } 
+    70%, 100% { transform: translate(40px, 40px) rotate(15deg); } 
+}
+
+@keyframes revealSplash {
+    0%, 25% { transform: scale(0); opacity: 0; }
+    45% { transform: scale(1.1); opacity: 1; border-radius: 40% 70% 30% 60%; } 
+    70%, 100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes popSparkle {
+    0%, 55% { transform: scale(0) rotate(0deg); opacity: 0; }
+    65% { transform: scale(1.3) rotate(15deg); opacity: 1; } 
+    80%, 100% { transform: scale(1) rotate(0deg); opacity: 0.9; }
+}
+
+/* LOGO ȘI FOOTER  */
+.site-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.3rem;
+    font-family: 'Playfair Display', serif;
+    animation: drawBox 1.2s ease-in-out forwards;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    clip-path: inset(0 100% 0 0); 
+    animation: drawText 1s cubic-bezier(0.215, 0.610, 0.355, 1) 0.5s forwards;
+}
+
+@keyframes drawBox {
+    0% { clip-path: inset(0 100% 100% 0); color: transparent; }
+    50% { clip-path: inset(0 0 0 0); color: transparent; }
+    100% { clip-path: inset(0 0 0 0); color: var(--accent-color); }
+}
+
+@keyframes drawText {
+    0% { clip-path: inset(0 100% 0 0); transform: translateX(-15px); opacity: 0; }
+    100% { clip-path: inset(0 0 0 0); transform: translateX(0); opacity: 1; }
 }
 
 main {
@@ -131,17 +319,25 @@ main {
     border-left: 4px solid transparent;
     outline: 1px solid var(--frame-color);
     outline-offset: -8px;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.5s ease, background-color 0.5s ease, outline-color 0.5s ease, color 0.5s ease;
     cursor: url('/pensula.svg') 0 0, pointer;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
-    border-left: 4px solid var(--accent-color);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(243, 156, 18, 0.25);
+    border-left: 4px solid #f1c40f; 
 }
 
-/* STILURI PENTRU ELEMENTELE "IN STORAGE" */
+.title-icon {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.card:hover .title-icon {
+    transform: rotate(20deg) scale(1.15);
+}
+
 .card.done {
     background-color: var(--done-bg);
     opacity: 0.9;
@@ -158,7 +354,6 @@ main {
     border: 1px solid rgba(192, 57, 43, 0.3);
 }
 
-/* STRUCTURA INTERIOARĂ A CARDULUI ȘI CHECKBOX (Etapa 5) */
 .task-main { 
     display: flex; 
     align-items: center; 
@@ -187,17 +382,18 @@ main {
     border-radius: 4px;
     border: 1px solid var(--frame-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.opera-imagine:hover {
+    transform: scale(1.1) rotate(-2deg);
+    border-color: var(--accent-color);
 }
 
 .card-title {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.title-icon {
-    width: 28px;
-    height: 28px;
 }
 
 .card-actions {
@@ -227,41 +423,35 @@ button, input, select {
     cursor: url('/pensula.svg') 0 0, pointer;
 }
 
-button {
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* Efectul de pată de vopsea la trecerea peste buton */
-button:hover {
-    background-color: var(--accent-color);
-    color: #ffffff;
-    border-color: transparent;
-    border-radius: 20px 80px 30px 70px / 70px 20px 80px 30px;
-    transform: scale(1.03) rotate(-1deg);
-    box-shadow: 0 8px 16px rgba(211, 84, 0, 0.3);
-}
-
 button:focus-visible, input:focus-visible, select:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
 }
 
-/* Etapa 5: Butonul de ștergere */
 .btn-danger {
-    border: 1px solid #c0392b;
+    border: 1px solid rgba(192, 57, 43, 0.3);
     background: transparent;
-    color: #c0392b;
+    color: rgba(192, 57, 43, 0.6);
     border-radius: 8px;
     padding: 6px 12px;
     font: inherit;
     cursor: url('/pensula.svg') 0 0, pointer;
     width: auto;
     margin-bottom: 0;
+    transition: all 0.3s ease;
+}
+
+.card:hover .btn-danger {
+    border-color: #c0392b;
+    color: #c0392b;
+    background-color: rgba(192, 57, 43, 0.05);
 }
 
 .btn-danger:hover { 
-    background: #c0392b; 
-    color: #fff; 
+    background: #c0392b !important; 
+    color: #fff !important; 
+    transform: scale(1.05);
+    border-radius: 8px;
 }
 
 ul {
@@ -270,23 +460,160 @@ ul {
     margin: 0;
 }
 
-/* RESPONSIVITATE PENTRU ECRANE MICI */
+/*  FEREASTRA MODALĂ (Detalii) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 1px solid var(--accent-color);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--text-color);
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 350px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 8px;
+    border: 2px solid var(--frame-color);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: #c0392b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.5);
+}
+
+.modal-close:hover {
+    background: #e74c3c !important;
+    transform: rotate(90deg) scale(1.1);
+}
+
+.modal-title {
+    margin-top: 0;
+    color: var(--accent-color);
+    text-align: center;
+}
+
+.modal-details p {
+    margin: 10px 0;
+    font-size: 1.05rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px) scale(0.9); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/*  FOOTER  */
+.site-footer {
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: 40px 40px 20px 40px;
+    margin-top: 40px;
+    border-top: 2px solid var(--accent-color);
+    text-align: left;
+}
+
+.footer-desc {
+    margin-top: 20px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.85;
+    max-width: 900px;
+}
+
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--frame-color);
+    margin: 25px 0 15px 0;
+}
+
+.footer-copy {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin: 0;
+}
+
+/*  RESPONSIVITATE PENTRU ECRANE MICI */
 @media (max-width: 700px) {
-    main {
-        grid-template-columns: 1fr; 
+    .header-left-panel {
+        position: relative;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center; 
+        margin-bottom: 20px;
     }
-    .header-icon {
-        display: none;
+    
+    .animated-art-scene {
+        display: none; 
     }
+
+    .app-header {
+        flex-direction: column;
+    }
+
+    .site-footer {
+        padding: 25px 20px 15px 20px;
+    }
+    
     .card {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
+    
     .card-info {
         flex-direction: column;
         text-align: center;
     }
+    
     .card-actions {
         align-items: flex-start;
     }
