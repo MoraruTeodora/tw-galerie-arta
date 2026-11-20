@@ -618,3 +618,166 @@ ul {
         align-items: flex-start;
     }
 }
+/* Etapa 6: stări de încărcare și de eroare */
+.info { 
+  color: var(--muted, #64748b); 
+}
+
+.error {
+  color: #b91c1c;
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+/* =====================================
+   ETAPA 7 - FORMULAR OPERE DE ARTA
+===================================== */
+
+.opera-form {
+    background: var(--card-bg);
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 20px 0 30px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    color: var(--text-color);
+}
+
+.opera-form h3 {
+    grid-column: 1 / -1;
+    color: var(--accent-color);
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 10px;
+}
+
+.opera-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.opera-form input:not([type="checkbox"]),
+.opera-form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px;
+    margin-bottom: 0;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font: inherit;
+}
+
+.opera-form select option {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+.opera-form .checkbox-label {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.opera-form input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-color);
+    margin: 0;
+}
+
+.opera-form button {
+    grid-column: 1 / -1;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 12px;
+    margin: 0;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.opera-form button:hover {
+    opacity: 0.85;
+}
+
+.opera-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.opera-form .error {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .opera-form {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+}
+
+/* ETAPA 7 - Marcarea campurilor invalide */
+
+.opera-form input[aria-invalid="true"] {
+    border: 2px solid #e74c3c;
+    outline: none;
+}
+
+.opera-form input[aria-invalid="true"]:focus {
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+.opera-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Corectare Etapa 8 - butonul imaginii din card */
+.image-modal-trigger {
+    width: auto;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+    display: block;
+    flex-shrink: 0;
+}
+
+.image-modal-trigger:hover {
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.image-modal-trigger .opera-imagine {
+    display: block;
+}
+
+/* Păstrăm fontul și aspectul original al titlurilor */
+.card-title a {
+    color: var(--text-color);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card-title a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}

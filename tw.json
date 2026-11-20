@@ -1,0 +1,13 @@
+
+{
+    "resource": "opere",
+    "title": "titlu",
+    "done": "expusa",
+    "sample": {
+        "artist": "Test Artist",
+        "an": 2020,
+        "tip": "Painting",
+        "categorie": "Contemporary",
+        "imagine": "/ganditorul.jpg"
+    }
+}

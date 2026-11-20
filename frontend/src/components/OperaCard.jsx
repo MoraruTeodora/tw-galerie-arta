@@ -1,38 +1,66 @@
-export default function OperaCard({ opera, onToggle, onDelete, onOpenModal }) {
+
+import { Link } from "react-router-dom";
+
+export default function OperaCard({
+    opera,
+    onToggle,
+    onDelete,
+    onOpenModal,
+}) {
     return (
-        <li className={opera.expusa ? "card" : "card done"}>
+        <li
+            className={opera.expusa ? "card" : "card done"}
+            data-testid="item"
+            data-id={opera.id}
+        >
             <div className="card-info task-main">
                 <input
                     type="checkbox"
                     checked={opera.expusa}
                     onChange={() => onToggle(opera.id)}
-                />
-                
-                {/* Imaginea pe care dai click pentru a deschide fereastra mare */}
-                <img 
-                    src={opera.imagine} 
-                    alt={opera.titlu} 
-                    className="opera-imagine" 
-                    onClick={() => onOpenModal(opera)}
-                    title="Click pentru a vedea detaliile"
+                    data-testid="item-toggle"
+                    aria-label={`Schimbă starea pentru ${opera.titlu}`}
                 />
 
-                <div>
+                <button
+                    type="button"
+                    className="image-modal-trigger"
+                    onClick={() => onOpenModal(opera)}
+                    aria-label={`Vezi ${opera.titlu}`}
+                >
+                    <img
+                        src={opera.imagine}
+                        alt={opera.titlu}
+                        className="opera-imagine"
+                    />
+                </button>
+
+                <div className="opera-info">
                     <h3 className="card-title">
-                        <img src="/paleta.svg" alt="Paleta SVG" className="title-icon" />
-                        {opera.titlu}
+                        <Link
+                            to={`/opere/${opera.id}`}
+                            data-testid="item-link"
+                        >
+                            {opera.titlu}
+                        </Link>
                     </h3>
-                    <p><strong>Type:</strong> {opera.tip} | <strong>Category:</strong> {opera.categorie}</p>
-                    <p><strong>Manager:</strong> {opera.administrator}</p>
+
+                    <p><strong>Tip:</strong> {opera.tip}</p>
+                    <p><strong>Categorie:</strong> {opera.categorie}</p>
+                    <p><strong>Administrator:</strong> {opera.administrator}</p>
                 </div>
             </div>
-            
+
             <div className="card-actions">
-                <span className="status">{opera.expusa ? "On Display" : "In Storage"}</span>
+                <span className="status">
+                    {opera.expusa ? "On Display" : "In Storage"}
+                </span>
+
                 <button
                     className="btn-danger"
                     onClick={() => onDelete(opera.id)}
                     aria-label={`Șterge ${opera.titlu}`}
+                    data-testid="item-delete"
                 >
                     Șterge
                 </button>

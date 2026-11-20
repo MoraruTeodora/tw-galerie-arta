@@ -1,19 +1,29 @@
+
 import OperaCard from "./OperaCard.jsx";
 
-export default function OperaList({ opereArta, onToggle, onDelete, onOpenModal }) {
+export default function OperaList({
+    opereArta,
+    onToggle,
+    onDelete,
+    onOpenModal,
+}) {
     if (opereArta.length === 0) {
-        return <p className="empty">Nu există nicio operă de artă în inventar.</p>;
+        return (
+            <p className="empty" data-testid="empty">
+                Nu există nicio operă de artă în inventar.
+            </p>
+        );
     }
 
     return (
         <ul className="task-list">
             {opereArta.map((opera) => (
-                <OperaCard 
-                    key={opera.id} 
-                    opera={opera} 
-                    onToggle={onToggle} 
-                    onDelete={onDelete} 
-                    onOpenModal={onOpenModal} 
+                <OperaCard
+                    key={opera.id}
+                    opera={opera}
+                    onToggle={onToggle}
+                    onDelete={onDelete}
+                    onOpenModal={onOpenModal}
                 />
             ))}
         </ul>

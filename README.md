@@ -107,3 +107,35 @@ The list lives in React state. Checking and deleting work from the page, and the
 | S5-R6 | light/dark toggle: state + data-theme on html | frontend/src/App.jsx, frontend/src/App.css | click the button, both system themes |
 | S5-R7 | no console warnings; README + AI log | README.md, ai-log/etapa-05.md | Console |
 | S5-R8 | commit "Stage 5" pushed | commit history |
+
+
+## Stage 7: form and validation
+
+The Art Gallery Management application now supports adding new
+artworks directly from the interface.
+
+The form is controlled and validates the artwork information
+before submitting it to the API.
+
+Implemented features:
+- Controlled form with React useState.
+- Validation for required fields.
+- Validation for artwork creation year (1450 - current year).
+- POST request for adding artworks.
+- PATCH request for changing exhibition status.
+- DELETE request for removing artworks.
+- Server-confirmed updates.
+- Loading and error messages.
+- Automated testing attributes (data-testid).
+- Artwork persistence after page refresh.
+
+## Status
+
+- [x] Stage 1: static mockup
+- [x] Stage 2: data logic in JavaScript
+- [x] Stage 3: Vite and React project
+- [x] Stage 4: components rendered from data
+- [x] Stage 5: local state and events
+- [x] Stage 6: data from a mock API
+- [x] Stage 7: form and validation
+- [ ] Stage 8: routing and detail page

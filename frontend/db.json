@@ -1,0 +1,59 @@
+{
+  "opere": [
+    {
+      "id": 1,
+      "titlu": "Noapte Înstelată",
+      "expusa": true,
+      "tip": "Painting",
+      "categorie": "Modern",
+      "administrator": "Teodora Moraru",
+      "artist": "Vincent van Gogh",
+      "an": 1889,
+      "imagine": "/noaptea_instelata.jpg"
+    },
+    {
+      "id": 2,
+      "titlu": "Gânditorul",
+      "expusa": false,
+      "tip": "Sculpture",
+      "categorie": "Classic",
+      "administrator": "Teodora Moraru",
+      "artist": "Auguste Rodin",
+      "an": 1902,
+      "imagine": "/ganditorul.jpg"
+    },
+    {
+      "id": 3,
+      "titlu": "Peisaj de toamnă",
+      "expusa": true,
+      "tip": "Photography",
+      "categorie": "Contemporary",
+      "administrator": "Teodora Moraru",
+      "artist": "Ansel Adams",
+      "an": 1942,
+      "imagine": "/peisaj_de_toamna.jpg"
+    },
+    {
+      "id": 4,
+      "titlu": "Fata cu cercel de perlă",
+      "expusa": true,
+      "tip": "Painting",
+      "categorie": "Baroque",
+      "administrator": "Teodora Moraru",
+      "artist": "Johannes Vermeer",
+      "an": 1665,
+      "imagine": "/fata_cercel.jpg"
+    },
+    {
+      "id": 5,
+      "titlu": "Persistența memoriei",
+      "expusa": true,
+      "tip": "Painting",
+      "categorie": "Surrealism",
+      "administrator": "Teodora Moraru",
+      "artist": "Salvador Dalí",
+      "an": 1931,
+      "imagine": "/persistenta_memoriei.jpg"
+    }
+  ]
+}
