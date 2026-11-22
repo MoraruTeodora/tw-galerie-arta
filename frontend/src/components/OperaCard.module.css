@@ -1,0 +1,145 @@
+.card {
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid transparent;
+    outline: 1px solid var(--frame-color);
+    outline-offset: -8px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.5s ease, background-color 0.5s ease, outline-color 0.5s ease, color 0.5s ease;
+    cursor: url('/pensula.svg') 0 0, pointer;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(243, 156, 18, 0.25);
+    border-left: 4px solid #f1c40f;
+}
+
+/* operă aflată în depozit */
+.done {
+    background-color: var(--done-bg);
+    opacity: 0.9;
+    filter: grayscale(15%);
+    border: 2px dashed var(--accent-color);
+    outline: none;
+}
+
+.done .status {
+    color: #c0392b;
+    background-color: rgba(192, 57, 43, 0.1);
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(192, 57, 43, 0.3);
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: url('/pensula.svg') 0 0, pointer;
+}
+
+.main input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--accent-color);
+    cursor: url('/pensula.svg') 0 0, pointer;
+    margin-bottom: 0;
+}
+
+.imageButton {
+    width: auto;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+    display: block;
+    flex-shrink: 0;
+}
+
+.imageButton:hover {
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.imagine {
+    display: block;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--frame-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.imagine:hover {
+    transform: scale(1.1) rotate(-2deg);
+    border-color: var(--accent-color);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title a {
+    color: var(--text-color);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.title a:hover {
+    color: var(--accent-color);
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.status {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* btn-danger este clasă globală (index.css) */
+.card:hover :global(.btn-danger) {
+    border-color: #c0392b;
+    color: #c0392b;
+    background-color: rgba(192, 57, 43, 0.05);
+}
+
+@media (max-width: 700px) {
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .main {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .actions {
+        align-items: flex-start;
+    }
+}

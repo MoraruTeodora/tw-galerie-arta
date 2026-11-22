@@ -13,7 +13,7 @@ async function request(path, options = {}) {
     });
 
     if (!response.ok) {
-        throw new Error(`Eroare server: ${response.status}`);
+        throw new Error(`Server error: ${response.status}`);
     }
 
     if (response.status === 204) {

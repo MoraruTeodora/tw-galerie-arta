@@ -2,7 +2,7 @@
   "opere": [
     {
       "id": 1,
-      "titlu": "Noapte Înstelată",
+      "titlu": "Starry Night",
       "expusa": true,
       "tip": "Painting",
       "categorie": "Modern",
@@ -13,7 +13,7 @@
     },
     {
       "id": 2,
-      "titlu": "Gânditorul",
+      "titlu": "The Thinker",
       "expusa": false,
       "tip": "Sculpture",
       "categorie": "Classic",
@@ -24,7 +24,7 @@
     },
     {
       "id": 3,
-      "titlu": "Peisaj de toamnă",
+      "titlu": "Autumn Landscape",
       "expusa": true,
       "tip": "Photography",
       "categorie": "Contemporary",
@@ -35,7 +35,7 @@
     },
     {
       "id": 4,
-      "titlu": "Fata cu cercel de perlă",
+      "titlu": "Girl with a Pearl Earring",
       "expusa": true,
       "tip": "Painting",
       "categorie": "Baroque",
@@ -46,7 +46,7 @@
     },
     {
       "id": 5,
-      "titlu": "Persistența memoriei",
+      "titlu": "The Persistence of Memory",
       "expusa": true,
       "tip": "Painting",
       "categorie": "Surrealism",

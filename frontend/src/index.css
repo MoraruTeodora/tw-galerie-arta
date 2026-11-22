@@ -1,0 +1,137 @@
+/* Stiluri globale: variabile, elemente de baza, clase comune.
+   Stilurile de componenta stau in fisierele *.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #fadadd 100%);
+    --text-color: #4a3b32;
+    --card-bg: rgba(255, 240, 245, 0.85);
+    --accent-color: #d35400;
+    --done-bg: rgba(240, 225, 230, 0.85);
+    --frame-color: rgba(211, 84, 0, 0.2);
+    --muted: #6b5b52;
+}
+
+/* Tema sistemului */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-gradient: linear-gradient(135deg, #2a283e 0%, #1f2335 50%, #12141e 100%);
+        --text-color: #f0e6e6;
+        --card-bg: rgba(30, 32, 48, 0.7);
+        --accent-color: #f39c12;
+        --done-bg: rgba(42, 45, 66, 0.85);
+        --frame-color: rgba(243, 156, 18, 0.2);
+        --muted: #b8aeb0;
+    }
+}
+
+/* Tema manuală (buton) */
+:root[data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #2a283e 0%, #1f2335 50%, #12141e 100%);
+    --text-color: #f0e6e6;
+    --card-bg: rgba(30, 32, 48, 0.7);
+    --accent-color: #f39c12;
+    --done-bg: rgba(42, 45, 66, 0.85);
+    --frame-color: rgba(243, 156, 18, 0.2);
+    --muted: #b8aeb0;
+}
+
+html {
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-image: url('/fundal.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    transition: color 0.5s ease, background-color 0.5s ease; 
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 0;
+    transition: color 0.5s ease;
+}
+
+/* BUTOANE ȘI INPUTURI (baza) */
+button, input, select {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--text-color);
+    font-family: inherit;
+    cursor: url('/pensula.svg') 0 0, pointer;
+}
+
+button:focus-visible, input:focus-visible, select:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+a {
+    color: var(--accent-color);
+}
+
+/* CLASE COMUNE */
+.panel {
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: 24px;
+    border-radius: 2px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+    outline: 1px solid var(--frame-color);
+    outline-offset: -8px;
+}
+
+.info {
+    color: var(--muted);
+}
+
+.empty {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.error {
+    color: #b91c1c;
+    background: #fdf2f8;
+    border: 1px solid #fbcfe8;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.btn-danger {
+    border: 1px solid rgba(192, 57, 43, 0.3);
+    background: transparent;
+    color: rgba(192, 57, 43, 0.6);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font: inherit;
+    cursor: url('/pensula.svg') 0 0, pointer;
+    width: auto;
+    margin-bottom: 0;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background: #c0392b !important;
+    color: #fff !important;
+    transform: scale(1.05);
+}

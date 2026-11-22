@@ -1,40 +1,21 @@
+import { Route, Routes } from "react-router-dom";
 
-import { Routes, Route } from "react-router-dom";
-
-import Layout from "./layout/Layout.jsx";
+import Layout from "./components/Layout.jsx";
 import OperePage from "./pages/OperePage.jsx";
-import OperaDetailPage from "./pages/OperaDetailPage.jsx";
+import OperaDetaliuPage from "./pages/OperaDetaliuPage.jsx";
 import DesprePage from "./pages/DesprePage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 
+// Harta rutelor. Layout înconjoară fiecare pagină.
 export default function App() {
-  return (
-    <Routes>
-      <Route element={<Layout />}>
-        {/* Pagina principală - lista operelor */}
-        <Route
-          path="/"
-          element={<OperePage />}
-        />
-
-        {/* Pagina cu detaliile unei opere */}
-        <Route
-          path="/opere/:id"
-          element={<OperaDetailPage />}
-        />
-
-        {/* Pagina Despre */}
-        <Route
-          path="/despre"
-          element={<DesprePage />}
-        />
-
-        {/* Pagina pentru rute inexistente */}
-        <Route
-          path="*"
-          element={<NotFoundPage />}
-        />
-      </Route>
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route element={<Layout />}>
+                <Route path="/" element={<OperePage />} />
+                <Route path="/opere/:id" element={<OperaDetaliuPage />} />
+                <Route path="/despre" element={<DesprePage />} />
+                <Route path="*" element={<NotFoundPage />} />
+            </Route>
+        </Routes>
+    );
 }

@@ -1,21 +1,19 @@
-
 export default function DesprePage() {
     return (
-        <main>
-            <section>
-                <h2>Despre Art Gallery Management</h2>
+        <section className="panel">
+            <h2>About Art Gallery Management</h2>
 
-                <p>
-                    Art Gallery Management este o aplicație
-                    pentru gestionarea operelor de artă dintr-o galerie.
-                </p>
+            <p>
+                Art Gallery Management is an application
+                for managing the artworks of an art gallery.
+            </p>
 
-                <p>
-                    Aplicația permite vizualizarea operelor,
-                    adăugarea unor opere noi, modificarea stării
-                    de expunere și ștergerea acestora.
-                </p>
-            </section>
-        </main>
+            <p>
+                The application lets you view artworks, add new
+                ones, change their display status and delete them.
+            </p>
+
+            <p>Stack: React, Vite, React Router, json-server.</p>
+        </section>
     );
 }

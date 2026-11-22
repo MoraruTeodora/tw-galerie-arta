@@ -1,5 +1,5 @@
-
 import OperaCard from "./OperaCard.jsx";
+import styles from "./OperaList.module.css";
 
 export default function OperaList({
     opereArta,
@@ -10,13 +10,13 @@ export default function OperaList({
     if (opereArta.length === 0) {
         return (
             <p className="empty" data-testid="empty">
-                Nu există nicio operă de artă în inventar.
+                There are no artworks in the inventory.
             </p>
         );
     }
 
     return (
-        <ul className="task-list">
+        <ul className={styles.list}>
             {opereArta.map((opera) => (
                 <OperaCard
                     key={opera.id}

@@ -1,0 +1,341 @@
+/* ANTET ȘI PARTICULE AURII */
+.header {
+    position: relative;
+    overflow: hidden;
+    min-height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: 20px 20px 56px;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.header::before,
+.header::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.header::before {
+    background-image:
+        radial-gradient(4px 4px at 20px 30px, #f1c40f, transparent),
+        radial-gradient(5px 5px at 80px 70px, #f39c12, transparent),
+        radial-gradient(3.5px 3.5px at 150px 20px, #f1c40f, transparent),
+        radial-gradient(4.5px 4.5px at 250px 120px, #e67e22, transparent),
+        radial-gradient(6px 6px at 320px 90px, rgba(243, 156, 18, 0.8), transparent),
+        radial-gradient(4px 4px at 50px 200px, #f1c40f, transparent),
+        radial-gradient(5.5px 5.5px at 180px 180px, #f39c12, transparent),
+        radial-gradient(3.5px 3.5px at 280px 250px, #e67e22, transparent);
+    background-size: 300px 300px;
+    animation: floatParticles 40s linear infinite;
+    opacity: 0.85;
+}
+
+.header::after {
+    background-image:
+        radial-gradient(2.5px 2.5px at 50px 160px, #f1c40f, transparent),
+        radial-gradient(3px 3px at 120px 230px, #f39c12, transparent),
+        radial-gradient(2.5px 2.5px at 210px 270px, #e67e22, transparent),
+        radial-gradient(3.5px 3.5px at 290px 330px, #f1c40f, transparent),
+        radial-gradient(4px 4px at 360px 200px, rgba(241, 196, 15, 0.6), transparent),
+        radial-gradient(2px 2px at 90px 40px, #f1c40f, transparent),
+        radial-gradient(3.5px 3.5px at 220px 80px, #f39c12, transparent),
+        radial-gradient(3px 3px at 320px 150px, #e67e22, transparent);
+    background-size: 350px 350px;
+    animation: floatParticles 70s linear infinite reverse;
+    opacity: 0.6;
+}
+
+@keyframes floatParticles {
+    0% { background-position: 0px 0px; }
+    100% { background-position: 1000px 1000px; }
+}
+
+/* ELEMENTE ANTET */
+.leftPanel {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.themeToggle {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    z-index: 10;
+    padding: 6px 12px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: url('/pensula.svg') 0 0, pointer;
+    width: auto;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.4s ease;
+}
+
+.themeToggle:hover {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.decor {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* NAVIGAȚIE (NavLink) */
+.nav {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 6px 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.link:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+.active:hover {
+    color: #fff;
+}
+
+/* ILUSTRAȚIE ANIMATĂ (PENSULĂ ȘI PÂNZĂ) */
+.scene {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+    z-index: 2;
+}
+
+.canvas {
+    position: relative;
+    width: 50px;
+    height: 60px;
+    background: #fdfdfd;
+    border: 3px solid var(--frame-color);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.splash {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent-color);
+    border-radius: 50% 40% 60% 30%;
+    opacity: 0;
+    transform: scale(0);
+    animation: revealSplash 3s ease-out infinite;
+}
+
+.sparkle {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    font-size: 1rem;
+    opacity: 0;
+    transform: scale(0);
+    animation: popSparkle 3s ease-out infinite;
+    line-height: 1;
+}
+
+.brush {
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
+    font-size: 2.5rem;
+    transform-origin: bottom left;
+    animation: paintStroke 3s ease-in-out infinite;
+    z-index: 3;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes paintStroke {
+    0% { transform: translate(40px, 40px) rotate(15deg); }
+    20% { transform: translate(0px, 10px) rotate(-15deg); }
+    35% { transform: translate(-25px, -15px) rotate(10deg); }
+    50% { transform: translate(-5px, -30px) rotate(-10deg); }
+    70%, 100% { transform: translate(40px, 40px) rotate(15deg); }
+}
+
+@keyframes revealSplash {
+    0%, 25% { transform: scale(0); opacity: 0; }
+    45% { transform: scale(1.1); opacity: 1; border-radius: 40% 70% 30% 60%; }
+    70%, 100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes popSparkle {
+    0%, 55% { transform: scale(0) rotate(0deg); opacity: 0; }
+    65% { transform: scale(1.3) rotate(15deg); opacity: 1; }
+    80%, 100% { transform: scale(1) rotate(0deg); opacity: 0.9; }
+}
+
+/* LOGO */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logoBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.3rem;
+    font-family: 'Playfair Display', serif;
+    animation: drawBox 1.2s ease-in-out forwards;
+}
+
+.logoText {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    clip-path: inset(0 100% 0 0);
+    animation: drawText 1s cubic-bezier(0.215, 0.610, 0.355, 1) 0.5s forwards;
+}
+
+@keyframes drawBox {
+    0% { clip-path: inset(0 100% 100% 0); color: transparent; }
+    50% { clip-path: inset(0 0 0 0); color: transparent; }
+    100% { clip-path: inset(0 0 0 0); color: var(--accent-color); }
+}
+
+@keyframes drawText {
+    0% { clip-path: inset(0 100% 0 0); transform: translateX(-15px); opacity: 0; }
+    100% { clip-path: inset(0 0 0 0); transform: translateX(0); opacity: 1; }
+}
+
+/* CONȚINUT */
+.main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding: 30px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* FOOTER */
+.footer {
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: 40px 40px 20px 40px;
+    margin-top: 40px;
+    border-top: 2px solid var(--accent-color);
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.footerDesc {
+    margin-top: 20px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.85;
+    max-width: 900px;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--frame-color);
+    margin: 25px 0 15px 0;
+}
+
+.copy {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .header {
+        flex-direction: column;
+        padding-bottom: 20px;
+    }
+
+    .leftPanel {
+        position: relative;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .scene {
+        display: none;
+    }
+
+    .nav {
+        position: static;
+        transform: none;
+        margin-top: 16px;
+    }
+
+    .footer {
+        padding: 25px 20px 15px 20px;
+    }
+}

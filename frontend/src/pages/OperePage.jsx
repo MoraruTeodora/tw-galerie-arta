@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import OperaList from "../components/OperaList.jsx";
 import OperaForm from "../components/OperaForm.jsx";
 
+import styles from "./OperePage.module.css";
+
 import {
     fetchOpere,
     createOpera,
@@ -54,7 +56,7 @@ export default function OperePage() {
             const operaSalvata = await createOpera(operaNoua);
             setOpereArta((prev) => [...prev, operaSalvata]);
         } catch (err) {
-            throw new Error("Nu s-a putut adăuga opera: " + err.message);
+            throw new Error("Could not add the artwork: " + err.message, { cause: err });
         }
     }
 
@@ -79,7 +81,7 @@ export default function OperePage() {
                 prev?.id === id ? actualizata : prev
             );
         } catch (err) {
-            setActionError("Nu s-a putut modifica opera: " + err.message);
+            setActionError("Could not update the artwork: " + err.message);
         }
     }
 
@@ -98,14 +100,14 @@ export default function OperePage() {
                 prev?.id === id ? null : prev
             );
         } catch (err) {
-            setActionError("Nu s-a putut șterge opera: " + err.message);
+            setActionError("Could not delete the artwork: " + err.message);
         }
     }
 
     const opereExpuse = opereArta.filter((o) => o.expusa).length;
 
     return (
-        <main>
+        <>
             <section>
                 <h2>Artwork Inventory</h2>
 
@@ -119,14 +121,14 @@ export default function OperePage() {
 
                 {loading && (
                     <p className="info" data-testid="loading">
-                        Se încarcă galeria...
+                        Loading the gallery...
                     </p>
                 )}
 
                 {error && (
                     <p className="error" data-testid="error">
-                        Nu am putut încărca datele: {error}.
-                        Rulează <code>npm run api</code>?
+                        Could not load the data: {error}.
+                        Is <code>npm run api</code> running?
                     </p>
                 )}
 
@@ -150,20 +152,20 @@ export default function OperePage() {
             {/* POP-UP cu detaliile operei */}
             {operaSelectata && (
                 <div
-                    className="modal-overlay"
+                    className={styles.overlay}
                     onClick={() => setOperaSelectata(null)}
                 >
                     <div
-                        className="modal-content"
+                        className={styles.modal}
                         role="dialog"
                         aria-modal="true"
                         aria-labelledby="modal-title"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
-                            className="modal-close"
+                            className={styles.close}
                             onClick={() => setOperaSelectata(null)}
-                            aria-label="Închide pop-up-ul"
+                            aria-label="Close pop-up"
                         >
                             ×
                         </button>
@@ -175,24 +177,24 @@ export default function OperePage() {
                         <img
                             src={operaSelectata.imagine}
                             alt={operaSelectata.titlu}
-                            className="modal-image"
+                            className={styles.image}
                         />
 
                         <p><strong>Artist:</strong> {operaSelectata.artist}</p>
-                        <p><strong>An:</strong> {operaSelectata.an}</p>
+                        <p><strong>Year:</strong> {operaSelectata.an}</p>
                         <p><strong>Tip:</strong> {operaSelectata.tip}</p>
-                        <p><strong>Categorie:</strong> {operaSelectata.categorie}</p>
+                        <p><strong>Category:</strong> {operaSelectata.categorie}</p>
                         <p>
                             <strong>Administrator:</strong>{" "}
                             {operaSelectata.administrator}
                         </p>
                         <p>
-                            <strong>Stare:</strong>{" "}
-                            {operaSelectata.expusa ? "Expusă" : "În depozit"}
+                            <strong>Status:</strong>{" "}
+                            {operaSelectata.expusa ? "On display" : "In storage"}
                         </p>
                     </div>
                 </div>
             )}
-        </main>
+        </>
     );
 }

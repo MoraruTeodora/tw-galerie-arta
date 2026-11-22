@@ -1,15 +1,7 @@
 
 import { useState } from "react";
-
-const TIPURI = ["Painting", "Sculpture", "Photography"];
-
-const CATEGORII = [
-    "Modern",
-    "Classic",
-    "Contemporary",
-    "Baroque",
-    "Surrealism",
-];
+import { CATEGORII, TIPURI } from "../constants.js";
+import styles from "./OperaForm.module.css";
 
 const AN_CURENT = new Date().getFullYear();
 
@@ -29,19 +21,19 @@ export default function OperaForm({ onAdd }) {
     function valideaza() {
         if (!titlu.trim()) {
             setCampInvalid("titlu");
-            return "Titlul operei este obligatoriu.";
+            return "The artwork title is required.";
         }
 
         if (!artist.trim()) {
             setCampInvalid("artist");
-            return "Numele artistului este obligatoriu.";
+            return "The artist name is required.";
         }
 
         const anNumeric = Number(an);
 
         if (!an.trim()) {
             setCampInvalid("an");
-            return "Anul realizării este obligatoriu.";
+            return "The year is required.";
         }
 
         if (
@@ -50,12 +42,12 @@ export default function OperaForm({ onAdd }) {
             anNumeric > AN_CURENT
         ) {
             setCampInvalid("an");
-            return `Anul trebuie să fie între 1450 și ${AN_CURENT}.`;
+            return `The year must be between 1450 and ${AN_CURENT}.`;
         }
 
         if (!imagine.trim()) {
             setCampInvalid("imagine");
-            return "Calea către imagine este obligatorie.";
+            return "The image path is required.";
         }
 
         setCampInvalid("");
@@ -105,15 +97,15 @@ export default function OperaForm({ onAdd }) {
 
     return (
         <form
-            className="opera-form"
+            className={styles.form}
             onSubmit={handleSubmit}
             noValidate
             data-testid="form"
         >
-            <h3>Adaugă o operă nouă</h3>
+            <h3>Add a new artwork</h3>
 
             <label>
-                Titlul operei
+                Artwork title
                 <input
                     type="text"
                     value={titlu}
@@ -122,7 +114,7 @@ export default function OperaForm({ onAdd }) {
                         setCampInvalid("");
                         setEroare("");
                     }}
-                    placeholder="Ex: Mona Lisa"
+                    placeholder="E.g.: Mona Lisa"
                     aria-invalid={campInvalid === "titlu"}
                     data-testid="form-title"
                 />
@@ -138,14 +130,14 @@ export default function OperaForm({ onAdd }) {
                         setCampInvalid("");
                         setEroare("");
                     }}
-                    placeholder="Ex: Leonardo da Vinci"
+                    placeholder="E.g.: Leonardo da Vinci"
                     aria-invalid={campInvalid === "artist"}
                     data-testid="form-artist"
                 />
             </label>
 
             <label>
-                Anul realizării
+                Year
                 <input
                     type="number"
                     value={an}
@@ -154,14 +146,14 @@ export default function OperaForm({ onAdd }) {
                         setCampInvalid("");
                         setEroare("");
                     }}
-                    placeholder="Ex: 1503"
+                    placeholder="E.g.: 1503"
                     aria-invalid={campInvalid === "an"}
                     data-testid="form-an"
                 />
             </label>
 
             <label>
-                Tipul operei
+                Type
                 <select
                     value={tip}
                     onChange={(e) => setTip(e.target.value)}
@@ -176,7 +168,7 @@ export default function OperaForm({ onAdd }) {
             </label>
 
             <label>
-                Categoria
+                Category
                 <select
                     value={categorie}
                     onChange={(e) => setCategorie(e.target.value)}
@@ -191,7 +183,7 @@ export default function OperaForm({ onAdd }) {
             </label>
 
             <label>
-                Calea către imagine
+                Image path
                 <input
                     type="text"
                     value={imagine}
@@ -200,20 +192,20 @@ export default function OperaForm({ onAdd }) {
                         setCampInvalid("");
                         setEroare("");
                     }}
-                    placeholder="Ex: /mona_lisa.jpg"
+                    placeholder="E.g.: /mona_lisa.jpg"
                     aria-invalid={campInvalid === "imagine"}
                     data-testid="form-imagine"
                 />
             </label>
 
-            <label className="checkbox-label">
+            <label className={styles.checkbox}>
                 <input
                     type="checkbox"
                     checked={expusa}
                     onChange={(e) => setExpusa(e.target.checked)}
                     data-testid="form-expusa"
                 />
-                Opera este expusă
+                Artwork is on display
             </label>
 
             {eroare && (
@@ -230,7 +222,7 @@ export default function OperaForm({ onAdd }) {
                 disabled={trimite}
                 data-testid="form-submit"
             >
-                {trimite ? "Se salvează..." : "Adaugă opera"}
+                {trimite ? "Saving..." : "Add artwork"}
             </button>
         </form>
     );
