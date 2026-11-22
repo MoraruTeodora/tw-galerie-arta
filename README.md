@@ -6,16 +6,16 @@ A web interface for an art gallery management system, allowing administrators to
 
 | Field | Type | Notes |
 | :--- | :--- | :--- |
-| Title | text | required, e.g., "Noapte Înstelată" |
+| Title | text | required, e.g., "Starry Night" |
 | Exhibited | boolean | toggled from the list, default true |
 | Type | fixed values | Painting, Sculpture, Photography |
 | Category | relation | Contemporary, Modern, Classic |
 | Administrator | relation | the owner of the item (from week 11) |
 
 ## Sample data used across all stages:
-1. "Noapte Înstelată", active, Painting, Contemporary, Administrator: Teodora Moraru
-2. "Gânditorul", done, Sculpture, Classic, Administrator: Teodora Moraru
-3. "Peisaj de toamnă", active, Photography, Contemporary, Administrator: Teodora Moraru
+1. "Starry Night", active, Painting, Contemporary, Administrator: Teodora Moraru
+2. "The Thinker", done, Sculpture, Classic, Administrator: Teodora Moraru
+3. "Autumn Landscape", active, Photography, Contemporary, Administrator: Teodora Moraru
 
 ## AI usage
 
@@ -138,4 +138,25 @@ Implemented features:
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
-- [ ] Stage 8: routing and detail page
+- [x] Stage 8: routing and detail page
+- [ ] Stage 9: own backend with Express
+
+## Stage 8: routing and detail page
+
+Three pages behind React Router: the gallery list, a detail page at `/opere/:id`
+(artist, year and image are shown only there), and an about page, plus a 404 page.
+The header, navigation and footer live in one `Layout` component rendered around
+every page with `<Outlet />`. Component styles moved to CSS Modules; `index.css`
+keeps only the color variables and the shared classes.
+
+## Stage 8 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S8-R1 | header navigation changes page without reload | https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/App.jsx#L12-L19, https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/components/Layout.jsx#L61-L73 | click links, watch Network |
+| S8-R2 | click on an item opens its detail page | https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/components/OperaCard.jsx#L40-L45, https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/pages/OperaDetaliuPage.jsx | click a title |
+| S8-R3 | refresh on the detail URL works; missing id shows an error | https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/pages/OperaDetaliuPage.jsx#L7-L52 | refresh /opere/1, open /opere/999 |
+| S8-R4 | unknown URL shows the app 404 page | https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/App.jsx#L17, https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/pages/NotFoundPage.jsx | open /ceva |
+| S8-R5 | each component has its .module.css; index.css only shared styles | https://github.com/MoraruTeodora/tw-galerie-arta/tree/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src | read |
+| S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route /opere/:id | https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/components/Layout.jsx#L61, https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/components/OperaCard.jsx#L42, https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/pages/OperaDetaliuPage.jsx#L58-L63, https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/frontend/src/pages/NotFoundPage.jsx#L5 | querySelector in the console |
+| S8-R7 | README Stage 8 section + AI log | https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/README.md, https://github.com/MoraruTeodora/tw-galerie-arta/blob/b66741a9011b93e49b33a96d7c9cbb34fbfbdf02/ai-log/etapa-08.md | read |
+| S8-R7 | README Stage 8 section + AI log | README.md, ai-log/etapa-08.md | read |
